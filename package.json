@@ -6,14 +6,14 @@
   "homepage": "https://goitacademy.github.io/parcel-project-template",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goitacademy/parcel-project-template.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
@@ -26,6 +26,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "lodash.throttle": "^4.1.1",
     "simplelightbox": "^2.10.3"
   }
 }
