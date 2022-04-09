@@ -24,6 +24,8 @@ const onDataInput = evt => {
   saveFormData(formData);
 };
 
+
+
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onDataInput, 500));
 
