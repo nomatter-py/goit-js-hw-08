@@ -37,6 +37,7 @@ function saveFormData(data) {
 function onFormSubmit(evt) {
   evt.preventDefault();
   evt.currentTarget.reset();
+  console.log(localStorage.getItem(FORM_STATE_KEY));
   localStorage.removeItem(FORM_STATE_KEY);
 }
 
