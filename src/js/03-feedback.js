@@ -12,24 +12,8 @@ const FORM_STATE_KEY = 'feedback-form-state';
 const currentFormState = localStorage.getItem(FORM_STATE_KEY);
 let formData = { email: '', message: '' };
 
-restoreFormState();
-
-const onDataInput = evt => {
-  if (evt.target.getAttribute('name') === 'email') {
-    formData.email = evt.target.value;
-  } else {
-    formData.message = evt.target.value;
-  }
-
-  saveFormData(formData);
-};
-
-
-
-refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', throttle(onDataInput, 500));
-
 function saveFormData(data) {
+  localStorage.removeItem(FORM_STATE_KEY);
   let formDataJSON = JSON.stringify(data);
   localStorage.setItem(FORM_STATE_KEY, formDataJSON);
 }
@@ -37,7 +21,7 @@ function saveFormData(data) {
 function onFormSubmit(evt) {
   evt.preventDefault();
   evt.currentTarget.reset();
-  console.log(localStorage.getItem(FORM_STATE_KEY));
+  console.log(JSON.parse(localStorage.getItem(FORM_STATE_KEY)));
   localStorage.removeItem(FORM_STATE_KEY);
 }
 
@@ -49,3 +33,20 @@ function restoreFormState() {
   refs.emailElement.value = formData.email;
   refs.messageElement.value = formData.message;
 }
+
+const onDataInput = evt => {
+  if (evt.target.getAttribute('name') === 'email') {
+    formData.email = evt.target.value;
+  } else {
+    formData.message = evt.target.value;
+  }
+
+  saveFormData(formData);
+};
+
+restoreFormState();
+
+refs.form.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('input', throttle(onDataInput, 500));
+
+
